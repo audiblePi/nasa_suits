@@ -207,7 +207,7 @@ function generateSweep(key, min, max, type){
     
     switch (type){
         case "int":
-            currentValue = (currentValue < (max+5) ) ? (currentValue + 1) : (min-5);
+            currentValue = (currentValue < (max+5) ) ? (currentValue + 1) : (min);
             break;
         case "dec":
             currentValue = (currentValue < (max*1.1) ) ? (currentValue + .01) : (min*.9);
