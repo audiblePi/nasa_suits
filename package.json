@@ -1,0 +1,17 @@
+{
+  "name": "nasa_suits",
+  "version": "1.0.0",
+  "description": "telemetry data stream demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "bhicks",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "timer-stopwatch": "^0.2.0"
+  }
+}
