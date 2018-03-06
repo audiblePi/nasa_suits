@@ -5,9 +5,9 @@ Simulates http server for telemery data. Data points sweep from min to max value
 - http://localhost:3000/api/switch/recent
 
 To run the data stream simulation:
-- `install nodejs and npm > https://nodejs.org/`
+- install nodejs and npm > https://nodejs.org/
 - `git clone https://github.com/audiblePi/nasa_suits.git`
 - `cd nasa_suits`
 - `npm install`
 - `node server.js`
-- `navigate to the endpoints in a browser to view the data stream`
+- navigate to the endpoints in a browser to view the data stream
