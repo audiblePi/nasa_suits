@@ -10,9 +10,9 @@ var timer = new Stopwatch(36000000); // A new countdown timer with 60 seconds
 
 
 
-initData();
-runDataStream();
-runSwitchStream();
+// initData();
+// runDataStream();
+// runSwitchStream();
 
 app.get('/', (req, res) => res.json({ message: 'telemetry data stream demo' }) );
 app.get('/api/telemetry/recent', (req, res) => res.json(telemetryData)); //numerical data from spacesuit sensors
