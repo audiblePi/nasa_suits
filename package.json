@@ -11,7 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "http": "0.0.0",
     "timer-stopwatch": "^0.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/audiblePi/nasa_suits"
+  },
 }

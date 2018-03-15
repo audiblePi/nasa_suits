@@ -1,36 +1,30 @@
-var app = require('express')();
-var http = require('http').Server(app);
+var express = require('express');
+var app     = express();
 var Stopwatch = require('timer-stopwatch');
 var dataRate = 100; //milliseconds
 var switchDataRate = 100; //milliseconds
 var telemetryData, switchData;
 var stopwatch = new Stopwatch(); // A new count up stopwatch. Starts at 0. 
 var timer = new Stopwatch(36000000); // A new countdown timer with 60 seconds 
-
-
-
-
-// initData();
-// runDataStream();
-// runSwitchStream();
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
+ 
+initData();
+runDataStream();
+runSwitchStream();
 
 app.get('/', (req, res) => res.json({ message: 'telemetry data stream demo' }) );
 app.get('/api/telemetry/recent', (req, res) => res.json(telemetryData)); //numerical data from spacesuit sensors
 app.get('/api/switch/recent', (req, res) => res.json(switchData)); //telemetry switches driven by numerical data points or other triggers
-//http.listen(3000, () => console.log('listening on *:3000') );
 
-
-
-
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
- 
-http.listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", port " + server_port )
+// error handling
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500).send('Something bad happened!');
 });
 
-
-
+app.listen(port, ip);
+console.log('Server running on http://%s:%s', ip, port);
 
 function initData(){
     //console.log("initData");
@@ -245,3 +239,5 @@ function getTime(ms){
 
     return hours + ":" + minutes + ":" + seconds;
 }
+
+module.exports = app ;
