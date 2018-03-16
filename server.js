@@ -18,10 +18,10 @@ app.get('/api/telemetry/recent', (req, res) => res.json(telemetryData)); //numer
 app.get('/api/switch/recent', (req, res) => res.json(switchData)); //telemetry switches driven by numerical data points or other triggers
 
 // error handling
-app.use(function(err, req, res, next){
-  console.error(err.stack);
-  res.status(500).send('Something bad happened!');
-});
+// app.use(function(err, req, res, next){
+//   console.error(err.stack);
+//   res.status(500).send('Something bad happened!');
+// });
 
 app.listen(port, ip);
 
