@@ -26,20 +26,20 @@ function initData(){
     
     telemetryData = { 
         _id : "5a8ed9a57eb95cd5d2855904", 
-        p_suit : 2, 
+        p_suit : 0, 
         t_batt : "10:00:00",
         t_o2 : "10:00:00", 
         t_h2o : "10:00:00", 
         p_sub : 2, 
         t_sub : -148,
-        v_fan : 10000, 
+        v_fan : 9000, 
         t_eva : "00:00:00", 
         p_o2 : 750, 
         rate_o2 : 0.5, 
         cap_battery : 0, 
         p_h2o_g : 14, 
         p_h2o_l : 14, 
-        p_sop : 750, 
+        p_sop : 550, 
         rate_sop : 0.75
     }
 
@@ -67,7 +67,7 @@ function runDataStream(){
     //Description: The pressure inside the spacesuit needs to stay within certain limits. 
     //If the suit pressure gets too high, the movement of the astronaut will be heavily reduced if the pressure exceeds nominal limits. 
     //Expected range is from 2 to 4 psid.
-    telemetryData["p_suit"] = generateSweep("p_suit", 2, 4, "int")
+    telemetryData["p_suit"] = generateSweep("p_suit", 0, 4, "int")
 
     //3.2.2 TIME LIFE BATTERY - [time value]
     //Description: The remaining time until the battery of the spacesuit is completely discharged. 
@@ -89,7 +89,7 @@ function runDataStream(){
 
     //3.2.5 SUB PRESSURE - [psia]
     //Description: External Environment pressure. Expected range is from 2 to 4 psia.
-    telemetryData["p_sub"] = generateSweep("p_sub", 2, 4, "int")
+    telemetryData["p_sub"] = generateSweep("p_sub", 0, 4, "int")
 
     //3.2.6 SUB TEMPERATURE - [degrees Fahrenheit]
     //Description: External Environmental temperature measured in degrees Fahrenheit. Temperatures are expected to be standard low earth orbit Day/Night-cycles without anamolies.
@@ -97,7 +97,7 @@ function runDataStream(){
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
-    telemetryData["v_fan"] = generateSweep("v_fan", 10000,40000, "int")
+    telemetryData["v_fan"] = generateSweep("v_fan", 9000,40000, "int")
 
     //3.2.8 EXTRAVEHICULAR ACTIVITY TIME - [time value]
     //Description: Stopwatch for the current EVA. EVA’s usually do not exceed a time of 9 hours.
@@ -125,7 +125,7 @@ function runDataStream(){
 
     //3.2.14 SOP PRESSURE - [psia]
     //Description: Pressure inside the Secondary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_sop"] = generateSweep("p_sop", 750, 950, "int")
+    telemetryData["p_sop"] = generateSweep("p_sop", 550, 950, "int")
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
