@@ -204,7 +204,7 @@ function runSwitchStream(){
     //O2 is off
     //O2 system is offline
     //if (counter == 2)
-        switchData["o2_off"] = getRandomIntInclusive(0, 1)
+        switchData["o2_off"] = !switchData["h2o_off"]
 
     //if (counter > 3)
     //    counter = 0
