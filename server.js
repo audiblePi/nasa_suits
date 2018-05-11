@@ -114,15 +114,15 @@ function runDataStream(){
 
     //3.2.11 BATTERY CAPACITY - [amp-hr]
     //Description: Total capacity of the spacesuit’s battery. Expected range is from 0 to 30 amp-hr.
-    telemetryData["cap_battery"] = generateSweep("cap_battery", 0, 40, "int", 2)
+    telemetryData["cap_battery"] = generateSweep("cap_battery", 0, 40, "int", 1)
 
     //3.2.12 H2O GAS PRESSURE - [psia]
     //Description: Gas pressure from H2O system. Expected range is from 14 to 16 psia.
-    telemetryData["p_h2o_g"] = generateSweep("p_h2o_g", 10, 20, "int", 2)
+    telemetryData["p_h2o_g"] = generateSweep("p_h2o_g", 10, 20, "int", 1)
 
     //3.2.13 H2O LIQUID PRESSURE - [psia]
     //Description: Liquid pressure from H2O system. Expected range is from 14 to 16 psia.
-    telemetryData["p_h2o_l"] = generateSweep("p_h2o_l", 10, 20, "int", 2)
+    telemetryData["p_h2o_l"] = generateSweep("p_h2o_l", 10, 20, "int", 1)
 
     //3.2.14 SOP PRESSURE - [psia]
     //Description: Pressure inside the Secondary Oxygen Pack. Expected range is from 750 to 950 psia.
@@ -130,7 +130,7 @@ function runDataStream(){
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.5)
+    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.2)
 
     setTimeout(runDataStream, dataRate)
 }
