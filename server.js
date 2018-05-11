@@ -138,12 +138,12 @@ function runSwitchStream(){
     //Battery amp high
     //Current of the battery is above maximum levels. Amps
     //Trigger: >4 amp
-    switchData["batt_amp_high"] = getRandomIntInclusive(0, 1)
+    switchData["batt_amp_high"] = !switchData["batt_amp_high"]
 
     //Battery vdc low
     //Voltage of the battery is below minimum levels. Volts
     //Trigger: <15 V
-    switchData["batt_vdc_low"] = getRandomIntInclusive(0, 1)
+    switchData["batt_vdc_low"] = !switchData["batt_vdc_low"]
 
     //Suit pressure low
     //Spacesuit pressure is below minimum levels. Psid
@@ -152,7 +152,7 @@ function runSwitchStream(){
 
     //SOP on
     //Secondary Oxygen Pack is active
-    switchData["sop_on"] = getRandomIntInclusive(0, 1)
+    switchData["sop_on"] = !switchData["sop_on"]
 
     //Spacesuit pressure emergency
     //Spacesuit pressure
@@ -165,7 +165,7 @@ function runSwitchStream(){
     //O2 use high
     //Oxygen usage exceeds normal use. Psi/min
     //Trigger: >1 psi/min
-    switchData["o2_use_high"] = getRandomIntInclusive(0, 1)
+    switchData["o2_use_high"] = !switchData["o2_use_high"]
 
     //SOP pressure low
     //Secondary Oxygen Pressure is below minimum levels. Psia
@@ -178,16 +178,16 @@ function runSwitchStream(){
 
     //No vent flow
     //No ventilation flow is detected
-    switchData["vent_error"] = getRandomIntInclusive(0, 1)
+    switchData["vent_error"] = !switchData["vent_error"]
 
     //CO2 high
     //Carbon dioxide levels are above maximum levels. PPM
     //Trigger: >500 ppm
-    switchData["co2_high"] = getRandomIntInclusive(0, 1)
+    switchData["co2_high"] = !switchData["co2_high"]
 
     // Vehicle power present
     //Spacesuit is receiving power through spacecraft
-    switchData["vehicle_power"] = getRandomIntInclusive(0, 1)
+    switchData["vehicle_power"] = !switchData["vehicle_power"]
 
     //H2O is off
     //H2O system is offline
