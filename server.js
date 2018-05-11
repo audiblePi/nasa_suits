@@ -97,7 +97,7 @@ function runDataStream(){
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
-    telemetryData["v_fan"] = generateSweep("v_fan", 9000,41000, "int", 10000)
+    telemetryData["v_fan"] = generateSweep("v_fan", 9000,41000, "int", 1000)
 
     //3.2.8 EXTRAVEHICULAR ACTIVITY TIME - [time value]
     //Description: Stopwatch for the current EVA. EVA’s usually do not exceed a time of 9 hours.
@@ -105,7 +105,7 @@ function runDataStream(){
 
     //3.2.9 OXYGEN PRESSURE - [psia]
     //Description: Pressure inside the Primary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_o2"] = generateSweep("p_o2", 600, 1000, "int", 100)
+    telemetryData["p_o2"] = generateSweep("p_o2", 600, 1000, "int", 25)
 
     //3.2.10 OXYGEN RATE - [psi/min]
     //Description: Flowrate of the Primary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
@@ -113,19 +113,19 @@ function runDataStream(){
 
     //3.2.11 BATTERY CAPACITY - [amp-hr]
     //Description: Total capacity of the spacesuit’s battery. Expected range is from 0 to 30 amp-hr.
-    telemetryData["cap_battery"] = generateSweep("cap_battery", 0, 40, "int", 5)
+    telemetryData["cap_battery"] = generateSweep("cap_battery", 0, 40, "int", 2)
 
     //3.2.12 H2O GAS PRESSURE - [psia]
     //Description: Gas pressure from H2O system. Expected range is from 14 to 16 psia.
-    telemetryData["p_h2o_g"] = generateSweep("p_h2o_g", 10, 20, "int", 4)
+    telemetryData["p_h2o_g"] = generateSweep("p_h2o_g", 10, 20, "int", 2)
 
     //3.2.13 H2O LIQUID PRESSURE - [psia]
     //Description: Liquid pressure from H2O system. Expected range is from 14 to 16 psia.
-    telemetryData["p_h2o_l"] = generateSweep("p_h2o_l", 10, 20, "int", 4)
+    telemetryData["p_h2o_l"] = generateSweep("p_h2o_l", 10, 20, "int", 2)
 
     //3.2.14 SOP PRESSURE - [psia]
     //Description: Pressure inside the Secondary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_sop"] = generateSweep("p_sop", 600, 1000, "int", 100)
+    telemetryData["p_sop"] = generateSweep("p_sop", 600, 1000, "int", 25)
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
