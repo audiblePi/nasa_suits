@@ -105,7 +105,7 @@ function runDataStream(){
 
     //3.2.9 OXYGEN PRESSURE - [psia]
     //Description: Pressure inside the Primary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_o2"] = generateSweep("p_o2", 600, 1000, "int", 25)
+    telemetryData["p_o2"] = generateSweep("p_o2", 600, 999, "int", 25)
 
     //3.2.10 OXYGEN RATE - [psi/min]
     //Description: Flowrate of the Primary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
@@ -125,7 +125,7 @@ function runDataStream(){
 
     //3.2.14 SOP PRESSURE - [psia]
     //Description: Pressure inside the Secondary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_sop"] = generateSweep("p_sop", 600, 1000, "int", 25)
+    telemetryData["p_sop"] = generateSweep("p_sop", 600, 999, "int", 25)
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
