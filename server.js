@@ -191,8 +191,7 @@ function runSwitchStream(){
     //Spacesuit is receiving power through spacecraft
     switchData["vehicle_power"] = !switchData["vehicle_power"]
 
-    if (counter == 60)
-        counter = 0
+    
 
     //H2O is off
     //H2O system is offline
@@ -204,6 +203,8 @@ function runSwitchStream(){
     if (counter == 60)
         switchData["o2_off"] = getRandomIntInclusive(0, 1)
 
+    if (counter > 60)
+        counter = 0
     counter++
     setTimeout(runSwitchStream, switchDataRate)
 }
