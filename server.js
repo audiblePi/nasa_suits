@@ -41,7 +41,8 @@ function initData(){
         p_h2o_g : 14, 
         p_h2o_l : 14, 
         p_sop : 550, 
-        rate_sop : 0.75
+        rate_sop : 0.75,
+        t_suit: -148
     }
 
     switchData = { 
@@ -98,7 +99,7 @@ function runDataStream(){
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
-    telemetryData["v_fan"] = generateSweep("v_fan", 9000,41000, "int", 5000)
+    telemetryData["v_fan"] = generateSweep("v_fan", 9000, 41000, "int", 5000)
 
     //3.2.8 EXTRAVEHICULAR ACTIVITY TIME - [time value]
     //Description: Stopwatch for the current EVA. EVA’s usually do not exceed a time of 9 hours.
@@ -131,7 +132,9 @@ function runDataStream(){
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
     telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.2)
-
+    
+    telemetryData["t_suit"] = generateSweep("t_suit", -148, 248, "int", 10)
+    
     setTimeout(runDataStream, dataRate)
 }
 
