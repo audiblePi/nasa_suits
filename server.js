@@ -210,7 +210,7 @@ function generateSweep(key, min, max, type, step){
             currentValue = (currentValue < max ) ? (currentValue + step) : (min)
             break
         case "dec":
-            currentValue = (currentValue < max ) ) ? (currentValue + step) : (min)
+            currentValue = (currentValue < max ) ? (currentValue + step) : (min)
             currentValue = Math.round(currentValue * 100 ) / 100
             break
         default:
