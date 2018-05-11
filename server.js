@@ -191,11 +191,11 @@ function runSwitchStream(){
 
     //H2O is off
     //H2O system is offline
-    switchData["h2o_off"] = !switchData["h2o_off"]
+    switchData["h2o_off"] = getRandomIntInclusive(0, 1)
 
     //O2 is off
     //O2 system is offline
-    switchData["o2_off"] = !switchData["o2_off"]
+    switchData["o2_off"] = getRandomIntInclusive(0, 1)
 
     setTimeout(runSwitchStream, switchDataRate)
 }
