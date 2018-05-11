@@ -67,7 +67,7 @@ function runDataStream(){
     //Description: The pressure inside the spacesuit needs to stay within certain limits. 
     //If the suit pressure gets too high, the movement of the astronaut will be heavily reduced if the pressure exceeds nominal limits. 
     //Expected range is from 2 to 4 psid.
-    telemetryData["p_suit"] = generateSweep("p_suit", 0, 4, "int")
+    telemetryData["p_suit"] = generateSweep("p_suit", 0, 6, "int", 1)
 
     //3.2.2 TIME LIFE BATTERY - [time value]
     //Description: The remaining time until the battery of the spacesuit is completely discharged. 
@@ -89,15 +89,15 @@ function runDataStream(){
 
     //3.2.5 SUB PRESSURE - [psia]
     //Description: External Environment pressure. Expected range is from 2 to 4 psia.
-    telemetryData["p_sub"] = generateSweep("p_sub", 0, 4, "int")
+    telemetryData["p_sub"] = generateSweep("p_sub", 0, 6, "int", 1)
 
     //3.2.6 SUB TEMPERATURE - [degrees Fahrenheit]
     //Description: External Environmental temperature measured in degrees Fahrenheit. Temperatures are expected to be standard low earth orbit Day/Night-cycles without anamolies.
-    telemetryData["t_sub"] = generateSweep("t_sub", -148, 248, "int")
+    telemetryData["t_sub"] = generateSweep("t_sub", -148, 248, "int", 20)
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
-    telemetryData["v_fan"] = generateSweep("v_fan", 9000,40000, "int")
+    telemetryData["v_fan"] = generateSweep("v_fan", 9000,41000, "int", 10000)
 
     //3.2.8 EXTRAVEHICULAR ACTIVITY TIME - [time value]
     //Description: Stopwatch for the current EVA. EVA’s usually do not exceed a time of 9 hours.
@@ -105,31 +105,31 @@ function runDataStream(){
 
     //3.2.9 OXYGEN PRESSURE - [psia]
     //Description: Pressure inside the Primary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_o2"] = generateSweep("p_o2", 750, 950, "int")
+    telemetryData["p_o2"] = generateSweep("p_o2", 600, 1000, "int", 100)
 
     //3.2.10 OXYGEN RATE - [psi/min]
     //Description: Flowrate of the Primary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_o2"] = generateSweep("rate_o2", 0.5, 1, "dec")
+    telemetryData["rate_o2"] = generateSweep("rate_o2", 0, 2, "dec", 0.5)
 
     //3.2.11 BATTERY CAPACITY - [amp-hr]
     //Description: Total capacity of the spacesuit’s battery. Expected range is from 0 to 30 amp-hr.
-    telemetryData["cap_battery"] = generateSweep("cap_battery", 0, 30, "int")
+    telemetryData["cap_battery"] = generateSweep("cap_battery", 0, 40, "int", 5)
 
     //3.2.12 H2O GAS PRESSURE - [psia]
     //Description: Gas pressure from H2O system. Expected range is from 14 to 16 psia.
-    telemetryData["p_h2o_g"] = generateSweep("p_h2o_g", 14, 16, "int")
+    telemetryData["p_h2o_g"] = generateSweep("p_h2o_g", 10, 20, "int", 4)
 
     //3.2.13 H2O LIQUID PRESSURE - [psia]
     //Description: Liquid pressure from H2O system. Expected range is from 14 to 16 psia.
-    telemetryData["p_h2o_l"] = generateSweep("p_h2o_l", 14, 16, "int")
+    telemetryData["p_h2o_l"] = generateSweep("p_h2o_l", 10, 20, "int", 4)
 
     //3.2.14 SOP PRESSURE - [psia]
     //Description: Pressure inside the Secondary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_sop"] = generateSweep("p_sop", 550, 950, "int")
+    telemetryData["p_sop"] = generateSweep("p_sop", 600, 1000, "int", 100)
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_sop"] = generateSweep("rate_sop", 0.5, 1, "dec")
+    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.5)
 
     setTimeout(runDataStream, dataRate)
 }
@@ -157,7 +157,7 @@ function runSwitchStream(){
     //Spacesuit pressure emergency
     //Spacesuit pressure
     
-    
+
     //Spacesuit pressure high
     //Spacesuit pressure is above maximum levels. Psid
     //Trigger: >5 psid
@@ -202,15 +202,15 @@ function runSwitchStream(){
 }
 
 //sweep from min to max to min +/- 10%
-function generateSweep(key, min, max, type){
+function generateSweep(key, min, max, type, step){
     var currentValue = telemetryData[key]
     
     switch (type){
         case "int":
-            currentValue = (currentValue < (max+5) ) ? (currentValue + 1) : (min)
+            currentValue = (currentValue < max ) ? (currentValue + step) : (min)
             break
         case "dec":
-            currentValue = (currentValue < (max*1.1) ) ? (currentValue + .01) : (min*.9)
+            currentValue = (currentValue < max ) ) ? (currentValue + step) : (min)
             currentValue = Math.round(currentValue * 100 ) / 100
             break
         default:
