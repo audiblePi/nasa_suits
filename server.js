@@ -157,6 +157,7 @@ function runSwitchStream(){
     //Spacesuit pressure emergency
     //Spacesuit pressure
     
+    
     //Spacesuit pressure high
     //Spacesuit pressure is above maximum levels. Psid
     //Trigger: >5 psid
