@@ -138,6 +138,7 @@ function runSwitchStream(){
     //Battery amp high
     //Current of the battery is above maximum levels. Amps
     //Trigger: >4 amp
+    switchData["batt_amp_high"] = !switchData["batt_amp_high"]
 
     //Battery vdc low
     //Voltage of the battery is below minimum levels. Volts
