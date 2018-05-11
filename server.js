@@ -206,7 +206,7 @@ function runSwitchStream(){
     //if (counter > 3)
     //    counter = 0
     
-    //counter++
+    counter++
     setTimeout(runSwitchStream, switchDataRate)
 }
 
