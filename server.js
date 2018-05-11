@@ -94,7 +94,7 @@ function runDataStream(){
 
     //3.2.6 SUB TEMPERATURE - [degrees Fahrenheit]
     //Description: External Environmental temperature measured in degrees Fahrenheit. Temperatures are expected to be standard low earth orbit Day/Night-cycles without anamolies.
-    telemetryData["t_sub"] = generateSweep("t_sub", -148, 248, "int", 25)
+    telemetryData["t_sub"] = generateSweep("t_sub", -148, 248, "int", 10)
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
