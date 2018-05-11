@@ -143,6 +143,7 @@ function runSwitchStream(){
     //Battery vdc low
     //Voltage of the battery is below minimum levels. Volts
     //Trigger: <15 V
+    switchData["batt_vdc_low"] = !switchData["batt_vdc_low"]
     
     //Suit pressure low
     //Spacesuit pressure is below minimum levels. Psid
