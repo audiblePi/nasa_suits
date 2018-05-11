@@ -195,15 +195,15 @@ function runSwitchStream(){
 
     //H2O is off
     //H2O system is offline
-    if (counter == 60)
+    if (counter == 10)
         switchData["h2o_off"] = getRandomIntInclusive(0, 1)
 
     //O2 is off
     //O2 system is offline
-    if (counter == 60)
+    if (counter == 10)
         switchData["o2_off"] = getRandomIntInclusive(0, 1)
 
-    if (counter > 60)
+    if (counter > 20)
         counter = 0
     counter++
     setTimeout(runSwitchStream, switchDataRate)
