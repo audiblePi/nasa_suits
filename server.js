@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var Stopwatch = require('timer-stopwatch')
 var dataRate = 1000 //ms
-var switchDataRate = 1000 //ms
+var switchDataRate = 5000 //ms
 var telemetryData, switchData
 var stopwatch = new Stopwatch() // A new count up stopwatch. Starts at 0. 
 var timer = new Stopwatch(36000000) // A new countdown timer with 60 seconds 
@@ -142,12 +142,12 @@ function runSwitchStream(){
     //Battery amp high
     //Current of the battery is above maximum levels. Amps
     //Trigger: >4 amp
-    switchData["batt_amp_high"] = !switchData["batt_amp_high"]
+    switchData["batt_amp_high"] = getRandomIntInclusive(0, 1)
 
     //Battery vdc low
     //Voltage of the battery is below minimum levels. Volts
     //Trigger: <15 V
-    switchData["batt_vdc_low"] = !switchData["batt_vdc_low"]
+    switchData["batt_vdc_low"] = getRandomIntInclusive(0, 1)
 
     //Suit pressure low
     //Spacesuit pressure is below minimum levels. Psid
@@ -156,7 +156,7 @@ function runSwitchStream(){
 
     //SOP on
     //Secondary Oxygen Pack is active
-    switchData["sop_on"] = !switchData["sop_on"]
+    switchData["sop_on"] = getRandomIntInclusive(0, 1)
 
     //Spacesuit pressure emergency
     //Spacesuit pressure
@@ -170,7 +170,7 @@ function runSwitchStream(){
     //O2 use high
     //Oxygen usage exceeds normal use. Psi/min
     //Trigger: >1 psi/min
-    switchData["o2_use_high"] = !switchData["o2_use_high"]
+    switchData["o2_use_high"] = getRandomIntInclusive(0, 1)
 
     //SOP pressure low
     //Secondary Oxygen Pressure is below minimum levels. Psia
@@ -183,16 +183,16 @@ function runSwitchStream(){
 
     //No vent flow
     //No ventilation flow is detected
-    switchData["vent_error"] = !switchData["vent_error"]
+    switchData["vent_error"] = getRandomIntInclusive(0, 1)
 
     //CO2 high
     //Carbon dioxide levels are above maximum levels. PPM
     //Trigger: >500 ppm
-    switchData["co2_high"] = !switchData["co2_high"]
+    switchData["co2_high"] = getRandomIntInclusive(0, 1)
 
     // Vehicle power present
     //Spacesuit is receiving power through spacecraft
-    switchData["vehicle_power"] = !switchData["vehicle_power"]
+    switchData["vehicle_power"] = getRandomIntInclusive(0, 1)
 
     
 
