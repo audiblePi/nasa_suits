@@ -6,6 +6,7 @@ var switchDataRate = 1000 //ms
 var telemetryData, switchData
 var stopwatch = new Stopwatch() // A new count up stopwatch. Starts at 0. 
 var timer = new Stopwatch(36000000) // A new countdown timer with 60 seconds 
+var counter = 0
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080
 var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
  
@@ -190,14 +191,20 @@ function runSwitchStream(){
     //Spacesuit is receiving power through spacecraft
     switchData["vehicle_power"] = !switchData["vehicle_power"]
 
+    if (counter == 3600)
+        counter = 0
+
     //H2O is off
     //H2O system is offline
-    switchData["h2o_off"] = getRandomIntInclusive(0, 1)
+    if (counter == 60)
+        switchData["h2o_off"] = getRandomIntInclusive(0, 1)
 
     //O2 is off
     //O2 system is offline
-    switchData["o2_off"] = getRandomIntInclusive(0, 1)
+    if (counter == 60)
+        switchData["o2_off"] = getRandomIntInclusive(0, 1)
 
+    counter++
     setTimeout(runSwitchStream, switchDataRate)
 }
 
