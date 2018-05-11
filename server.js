@@ -95,11 +95,11 @@ function runDataStream(){
 
     //3.2.6 SUB TEMPERATURE - [degrees Fahrenheit]
     //Description: External Environmental temperature measured in degrees Fahrenheit. Temperatures are expected to be standard low earth orbit Day/Night-cycles without anamolies.
-    telemetryData["t_sub"] = generateSweep("t_sub", -148, 248, "int", 7)
+    telemetryData["t_sub"] = generateSweep("t_sub", -148, 248, "int", 1)
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
-    telemetryData["v_fan"] = generateSweep("v_fan", 9000, 41000, "int", 5424)
+    telemetryData["v_fan"] = generateSweep("v_fan", 9000, 41000, "int", 424)
 
     //3.2.8 EXTRAVEHICULAR ACTIVITY TIME - [time value]
     //Description: Stopwatch for the current EVA. EVA’s usually do not exceed a time of 9 hours.
@@ -107,7 +107,7 @@ function runDataStream(){
 
     //3.2.9 OXYGEN PRESSURE - [psia]
     //Description: Pressure inside the Primary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_o2"] = generateSweep("p_o2", 600, 999, "int", 8)
+    telemetryData["p_o2"] = generateSweep("p_o2", 600, 999, "int", 1)
 
     //3.2.10 OXYGEN RATE - [psi/min]
     //Description: Flowrate of the Primary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
@@ -127,13 +127,13 @@ function runDataStream(){
 
     //3.2.14 SOP PRESSURE - [psia]
     //Description: Pressure inside the Secondary Oxygen Pack. Expected range is from 750 to 950 psia.
-    telemetryData["p_sop"] = generateSweep("p_sop", 600, 999, "int", 13)
+    telemetryData["p_sop"] = generateSweep("p_sop", 600, 999, "int", 1)
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
     telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.25)
     
-    telemetryData["t_suit"] = generateSweep("t_suit", -148, 248, "int", 9)
+    telemetryData["t_suit"] = generateSweep("t_suit", -148, 248, "int", 4)
     
     setTimeout(runDataStream, dataRate)
 }
