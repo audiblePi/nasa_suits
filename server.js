@@ -144,7 +144,7 @@ function runSwitchStream(){
     //Voltage of the battery is below minimum levels. Volts
     //Trigger: <15 V
     switchData["batt_vdc_low"] = !switchData["batt_vdc_low"]
-    
+
     //Suit pressure low
     //Spacesuit pressure is below minimum levels. Psid
     //Trigger: <2
@@ -152,7 +152,8 @@ function runSwitchStream(){
 
     //SOP on
     //Secondary Oxygen Pack is active
-     
+    switchData["sop_on"] = !switchData["sop_on"]
+
     //Spacesuit pressure emergency
     //Spacesuit pressure
     
@@ -164,7 +165,8 @@ function runSwitchStream(){
     //O2 use high
     //Oxygen usage exceeds normal use. Psi/min
     //Trigger: >1 psi/min
-    
+    switchData["o2_use_high"] = !switchData["o2_use_high"]
+
     //SOP pressure low
     //Secondary Oxygen Pressure is below minimum levels. Psia
     //Trigger: <700 psia
@@ -172,23 +174,28 @@ function runSwitchStream(){
 
     //Fan failure
     //Cooling fan of the spacesuit has a failure
-    switchData["vent_error"] = (telemetryData["v_fan"] < 10000) ? true : false
+    switchData["fan_error"] = (telemetryData["v_fan"] < 10000) ? true : false
 
     //No vent flow
     //No ventilation flow is detected
+    switchData["vent_error"] = !switchData["vent_error"]
 
     //CO2 high
     //Carbon dioxide levels are above maximum levels. PPM
     //Trigger: >500 ppm
-    
+    switchData["co2_high"] = !switchData["co2_high"]
+
     // Vehicle power present
     //Spacesuit is receiving power through spacecraft
+    switchData["vehicle_power"] = !switchData["vehicle_power"]
 
     //H2O is off
     //H2O system is offline
+    switchData["h2o_off"] = !switchData["h2o_off"]
 
     //O2 is off
     //O2 system is offline
+    switchData["o2_off"] = !switchData["o2_off"]
 
     setTimeout(runSwitchStream, switchDataRate)
 }
