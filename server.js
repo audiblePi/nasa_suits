@@ -112,7 +112,7 @@ function runDataStream(){
 
     //3.2.10 OXYGEN RATE - [psi/min]
     //Description: Flowrate of the Primary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_o2"] = generateSweep("rate_o2", 0, 2, "dec", 0.1)
+    telemetryData["rate_o2"] = generateSweep("rate_o2", 0, 2, "dec", 0.01)
 
     //3.2.11 BATTERY CAPACITY - [amp-hr]
     //Description: Total capacity of the spacesuit’s battery. Expected range is from 0 to 30 amp-hr.
@@ -132,7 +132,7 @@ function runDataStream(){
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.1)
+    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.01)
     
     telemetryData["t_suit"] = generateSweep("t_suit", -148, 248, "int", 1)
     
@@ -249,6 +249,7 @@ function generateSweep(key, min, max, type, step){
         case "dec":
             currentValue = (currentValue < max ) ? (currentValue + step) : (min)
             currentValue = Math.round(currentValue * 100 ) / 100
+            console.log(currentValue)
             break
         default:
             currentValue = -777777
