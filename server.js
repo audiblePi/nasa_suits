@@ -27,6 +27,7 @@ function initData(){
     
     telemetryData = { 
         _id : "5a8ed9a57eb95cd5d2855904", 
+        heart_bpm: 88,
         p_suit : 0, 
         t_batt : "10:00:00",
         t_o2 : "10:00:00", 
@@ -36,7 +37,7 @@ function initData(){
         v_fan : 9000, 
         t_eva : "00:00:00", 
         p_o2 : 750, 
-        rate_o2 : 0.5, 
+        rate_o2 : 0.55, 
         cap_battery : 0, 
         p_h2o_g : 14, 
         p_h2o_l : 14, 
@@ -99,7 +100,7 @@ function runDataStream(){
 
     //3.2.7 FAN TACHOMETER- [RPM]
     //Description: Speed of the cooling fan. Expected range is from 10000 to 40000 RPM.
-    telemetryData["v_fan"] = generateSweep("v_fan", 9000, 41000, "int", 424)
+    telemetryData["v_fan"] = generateSweep("v_fan", 9000, 41000, "int", 1)
 
     //3.2.8 EXTRAVEHICULAR ACTIVITY TIME - [time value]
     //Description: Stopwatch for the current EVA. EVA’s usually do not exceed a time of 9 hours.
@@ -111,7 +112,7 @@ function runDataStream(){
 
     //3.2.10 OXYGEN RATE - [psi/min]
     //Description: Flowrate of the Primary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_o2"] = generateSweep("rate_o2", 0, 2, "dec", 0.22)
+    telemetryData["rate_o2"] = generateSweep("rate_o2", 0, 2, "dec", 0.1)
 
     //3.2.11 BATTERY CAPACITY - [amp-hr]
     //Description: Total capacity of the spacesuit’s battery. Expected range is from 0 to 30 amp-hr.
@@ -131,9 +132,9 @@ function runDataStream(){
 
     //3.2.15 SOP RATE - [psi/min]
     //Description: Flowrate of the Secondary Oxygen Pack. Expected range is from 0.5 to 1 psi/min.
-    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.25)
+    telemetryData["rate_sop"] = generateSweep("rate_sop", 0, 2, "dec", 0.1)
     
-    telemetryData["t_suit"] = generateSweep("t_suit", -148, 248, "int", 4)
+    telemetryData["t_suit"] = generateSweep("t_suit", -148, 248, "int", 1)
     
     setTimeout(runDataStream, dataRate)
 }
