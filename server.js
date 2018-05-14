@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var Stopwatch = require('timer-stopwatch')
 var dataRate = 1000 //ms
-var switchDataRate = 5000 //ms
+var switchDataRate = 1000 //ms
 var telemetryData, switchData
 var stopwatch = new Stopwatch() // A new count up stopwatch. Starts at 0. 
 var timer = new Stopwatch(36000000) // A new countdown timer with 60 seconds 
@@ -139,38 +139,80 @@ function runDataStream(){
 }
 
 function runSwitchStream(){    
-    //Battery amp high
-    //Current of the battery is above maximum levels. Amps
-    //Trigger: >4 amp
-    switchData["batt_amp_high"] = getRandomIntInclusive(0, 1)
+    var randomSwitch = getRandomIntInclusive(0, 13)
 
-    //Battery vdc low
-    //Voltage of the battery is below minimum levels. Volts
-    //Trigger: <15 V
-    switchData["batt_vdc_low"] = getRandomIntInclusive(0, 1)
+    switch (randomSwitch){
+        case 0:
+            //Battery amp high
+            //Current of the battery is above maximum levels. Amps
+            //Trigger: >4 amp
+            switchData["batt_amp_high"] = !switchData["batt_amp_high"]
+            break;
+        case 1:
+            //Battery vdc low
+            //Voltage of the battery is below minimum levels. Volts
+            //Trigger: <15 V
+            switchData["batt_vdc_low"] = !switchData["batt_vdc_low"]
+            break;
+        case 2:
+            //SOP on
+            //Secondary Oxygen Pack is active
+            switchData["sop_on"] = !switchData["sop_on"]
+            break;
+        case 3:
+            //Spacesuit pressure emergency
+            //Spacesuit pressure
+            switchData["sspe"] = !switchData["sspe"]
+            break;
+        case 4:
+            //O2 use high
+            //Oxygen usage exceeds normal use. Psi/min
+            //Trigger: >1 psi/min
+            switchData["o2_use_high"] = !switchData["o2_use_high"]
+            break;
+        case 5:
+            //No vent flow
+            //No ventilation flow is detected
+            switchData["vent_error"] = !switchData["vent_error"]
+            break;
+        case 6:
+            //CO2 high
+            //Carbon dioxide levels are above maximum levels. PPM
+            //Trigger: >500 ppm
+            switchData["co2_high"] = !switchData["co2_high"]
+            break;
+        case 7:
+            // Vehicle power present
+            //Spacesuit is receiving power through spacecraft
+            switchData["vehicle_power"] = !switchData["vehicle_power"] 
+            break;
+        case 8:
+            //H2O is off
+            //H2O system is offline
+            switchData["h2o_off"] = !switchData["h2o_off"]
+            break;
+        case 9:
+            //O2 is off
+            //O2 system is offline
+            switchData["o2_off"] = !switchData["o2_off"]
+            break;
+        default:
+            //defualt
+            break;
+
+    }
+    
+    //telemetry dependant switches    
 
     //Suit pressure low
     //Spacesuit pressure is below minimum levels. Psid
     //Trigger: <2
     switchData["suit_pressure_low"] = (telemetryData["p_suit"] < 2) ? true : false
 
-    //SOP on
-    //Secondary Oxygen Pack is active
-    switchData["sop_on"] = getRandomIntInclusive(0, 1)
-
-    //Spacesuit pressure emergency
-    //Spacesuit pressure
-    
-
     //Spacesuit pressure high
     //Spacesuit pressure is above maximum levels. Psid
     //Trigger: >5 psid
     switchData["suit_pressure_high"] = (telemetryData["p_suit"] > 5) ? true : false
-
-    //O2 use high
-    //Oxygen usage exceeds normal use. Psi/min
-    //Trigger: >1 psi/min
-    switchData["o2_use_high"] = getRandomIntInclusive(0, 1)
 
     //SOP pressure low
     //Secondary Oxygen Pressure is below minimum levels. Psia
@@ -181,35 +223,6 @@ function runSwitchStream(){
     //Cooling fan of the spacesuit has a failure
     switchData["fan_error"] = (telemetryData["v_fan"] < 10000) ? true : false
 
-    //No vent flow
-    //No ventilation flow is detected
-    switchData["vent_error"] = getRandomIntInclusive(0, 1)
-
-    //CO2 high
-    //Carbon dioxide levels are above maximum levels. PPM
-    //Trigger: >500 ppm
-    switchData["co2_high"] = getRandomIntInclusive(0, 1)
-
-    // Vehicle power present
-    //Spacesuit is receiving power through spacecraft
-    switchData["vehicle_power"] = getRandomIntInclusive(0, 1)
-
-    
-
-    //H2O is off
-    //H2O system is offline
-    if (counter == 2)
-        switchData["h2o_off"] = getRandomIntInclusive(0, 1)
-
-    //O2 is off
-    //O2 system is offline
-    //if (counter == 2)
-        switchData["o2_off"] = !switchData["h2o_off"]
-
-    if (counter > 3)
-        counter = 0
-    
-    counter++
     setTimeout(runSwitchStream, switchDataRate)
 }
 
