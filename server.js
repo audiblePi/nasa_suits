@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 var Stopwatch = require('timer-stopwatch')
 var dataRate = 1000 //ms
-var switchDataRate = 1000 //ms
+var switchDataRate = 5000 //ms
 var telemetryData, switchData
 var stopwatch = new Stopwatch() // A new count up stopwatch. Starts at 0. 
 var timer = new Stopwatch(36000000) // A new countdown timer with 60 seconds 
